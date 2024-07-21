@@ -9,14 +9,15 @@ Ensure Hyper-V is enabled on your system.
 
 1. **Open PowerShell as an Administrator** and execute the following commands to set up your new VM:
 
+    Note: I've chosen to save the .iso in C:\iso\ and the .vhdx in C:\vhdx\
     ```powershell
     New-VMSwitch -SwitchName NATSwitch -SwitchType Internal  
     New-NetIPAddress -IPAddress 10.0.0.1 -PrefixLength 24 -InterfaceAlias "vEthernet (NATSwitch)"
     New-NetNAT -Name NATNetwork -InternalIPInterfaceAddressPrefix 10.0.0.0/24
-    New-VHD -Path "D:\DEV-W11.vhdx" -SizeBytes 40GB -Dynamic
-    New-VM -Name DEV-W11 -MemoryStartupBytes 6GB -VHDPath "D:\DEV-W11.vhdx" -BootDevice VHD -Generation 2 -Switch NATSwitch
+    New-VHD -Path "C:\vhdx\DEV-W11.vhdx" -SizeBytes 40GB -Dynamic
+    New-VM -Name DEV-W11 -MemoryStartupBytes 6GB -VHDPath "C:\vhdx\DEV-W11.vhdx" -BootDevice VHD -Generation 2 -Switch NATSwitch
     Set-VMProcessor -VMName DEV-W11 -Count 4 -ExposeVirtualizationExtensions $true
-    Add-VMDvdDrive -VMName DEV-W11 -Path "D:\iso\WIN11.PRO.24H2.X64.(WPE).ISO"
+    Add-VMDvdDrive -VMName DEV-W11 -Path "C:\iso\WIN11.PRO.24H2.X64.(WPE).ISO"
     $dvd = Get-VMDvdDrive -VMName DEV-W11
     Set-VMFirmware -VMName DEV-W11 -FirstBootDevice $dvd -EnableSecureBoot Off 
     ```
