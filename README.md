@@ -1,13 +1,13 @@
 ### New virtual machine for development
 
-I'm a fan of Ghost Spectre's Windows 11 Superlite, a trimmed-down version of the original Windows. We'll be using it in our new virtual machine. You can download it from [this link](https://ghostclouds.xyz/wp/w11-24h2-pro).
+I'm a fan of Ghost Spectre's Windows 11 Superlite, a trimmed-down version of the original Windows. We'll be using it in our new virtual machine. You can download it [here](https://ghostclouds.xyz/wp/w11-24h2-pro).
 
 #### Prerequisites
-Ensure Hyper-V is enabled on your system before proceeding.
+Ensure Hyper-V is enabled on your system.
 
 #### Setting Up the Virtual Machine
 
-1. **Open PowerShell as an Administrator** and execute the following commands to set up your new virtual machine:
+1. **Open PowerShell as an Administrator** and execute the following commands to set up your new VM:
 
     ```powershell
     New-VMSwitch -SwitchName NATSwitch -SwitchType Internal  
@@ -21,7 +21,7 @@ Ensure Hyper-V is enabled on your system before proceeding.
     Set-VMFirmware -VMName DEV-W11 -FirstBootDevice $dvd -EnableSecureBoot Off 
     ```
 
-2. **Launch Hyper-V Manager**, start the VM, and connect to it. Quickly tap a keyboard key to boot from DVD.
+2. **Launch Hyper-V Manager**, start the VM and connect to it. Quickly tap a keyboard key to boot from DVD.
 
 3. **Installation**:
     - Choose Windows 11 Pro Superlite (without Defender) during the setup process.
@@ -39,7 +39,7 @@ Ensure Hyper-V is enabled on your system before proceeding.
     - I chose Brave as my browser.
 
 6. **Install Chocolatey**:
-    - Follow the instructions on the [Chocolatey installation page](https://chocolatey.org/install) to install Chocolatey.
+    - Follow the instructions on the [Chocolatey installation page](https://chocolatey.org/install).
     - Relaunch PowerShell as an Administrator and install your favorite software using `choco install <software-name>`.
 
-That's it! You now have a new virtual machine set up and ready for your development purposes.
+That's it! You now have a new VM set up and ready for your development purposes.
